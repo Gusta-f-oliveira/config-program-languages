@@ -1,0 +1,28 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Compilar COBOL",
+            "type": "shell",
+            "command": "cmd",
+            "args": [
+                "/c",
+                "if not exist \"${workspaceFolder}\\bin\" mkdir \"${workspaceFolder}\\bin\" & if not exist \"${workspaceFolder}\\temp\" mkdir \"${workspaceFolder}\\temp\" & set COB_CONFIG_DIR=C:\\gnucobol\\config& cd /d \"${workspaceFolder}\\temp\" & cobc -x -g \"${file}\" -o \"${workspaceFolder}\\bin\\${fileBasenameNoExtension}.exe\""
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "shell": {
+                    "executable": "cmd.exe",
+                    "args": ["/d", "/c"]
+                }
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        }
+    ]
+}

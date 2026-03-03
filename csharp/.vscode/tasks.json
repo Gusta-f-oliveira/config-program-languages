@@ -1,0 +1,25 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build-csharp",
+            "type": "shell",
+            "command": "cmd",
+            "args": [
+                "/c",
+                "mkdir \"${workspaceFolder}\\bin\" 2>nul & \"C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\csc.exe\" /nologo /debug /out:\"${workspaceFolder}\\bin\\${fileBasenameNoExtension}.exe\" \"${file}\""
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "silent",
+                "clear": true
+            },
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Pascal",
+            "type": "shell",
+            "command": "fpc",
+            "args": [
+                "-g",
+                "-FE${workspaceFolder}\\bin", 
+                "-FU${workspaceFolder}\\temp", 
+                "${file}"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        }
+    ]
+}
