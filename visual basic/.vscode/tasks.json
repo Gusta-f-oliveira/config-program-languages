@@ -1,0 +1,39 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "compilar-vb",
+            "type": "shell",
+            "windows": {
+                "command": "powershell",
+                "args": [
+                    "-Command",
+                    "if (!(Test-Path '${workspaceFolder}\\bin')) { New-Item -ItemType Directory -Force -Path '${workspaceFolder}\\bin' | Out-Null }; & 'C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\vbc.exe' /nologo /debug:full /out:'${workspaceFolder}\\bin\\${fileBasenameNoExtension}.exe' '${file}'"
+                ]
+            },
+            "linux": {
+                "command": "dotnet",
+                "args": [
+                    "build",
+                    "${fileDirname}",
+                    "-o",
+                    "/tmp/vscode_bin/vb_build/${fileBasenameNoExtension}/bin",
+                    "/p:BaseIntermediateOutputPath=/tmp/vscode_bin/vb_build/${fileBasenameNoExtension}/obj/",
+                    "/p:AssemblyName=app",
+                    "/property:GenerateFullPaths=true",
+                    "/consoleloggerparameters:NoSummary"
+                ]
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}

@@ -5,22 +5,20 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Perl: Depurar no Terminal (F5)",
-            "type": "node",
+            "name": "Depurar VB.NET",
+            "type": "coreclr",
             "request": "launch",
+            "preLaunchTask": "compilar-vb",
             "console": "integratedTerminal",
-            "internalConsoleOptions": "neverOpen",
+            "stopAtEntry": false,
             "windows": {
-                "runtimeExecutable": "C:\\Strawberry\\perl\\bin\\perl.exe",
-                "runtimeArgs": [
-                    "${file}"
-                ]
+                "type": "clr",    
+                "program": "${workspaceFolder}\\bin\\${fileBasenameNoExtension}.exe",
+                "cwd": "${workspaceFolder}"
             },
             "linux": {
-                "runtimeExecutable": "perl",
-                "runtimeArgs": [
-                    "/tmp/perl_run/temp.pl"
-                ]
+                "program": "/tmp/vscode_bin/vb_build/${fileBasenameNoExtension}/bin/app.dll",
+                "cwd": "${fileDirname}"
             }
         }
     ]

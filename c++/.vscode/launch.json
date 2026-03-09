@@ -8,14 +8,19 @@
             "name": "Debug C++ (F5)",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/bin/${fileBasenameNoExtension}.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
-            "preLaunchTask": "build-cpp"
+            "preLaunchTask": "build-cpp",
+            "windows": {
+                "program": "${workspaceFolder}/bin/${fileBasenameNoExtension}.exe"
+            },
+            "linux": {
+                "program": "/tmp/vscode_bin/${fileBasenameNoExtension}"
+            }
         }
     ]
 }

@@ -10,7 +10,12 @@
             "request": "launch",
             "program": "${file}",
             "stopOnEntry": false,
-            "luaExe": "C:\\lua-5.5.0_Win64_bin\\lua55.exe"
+            "windows": {
+                "luaExe": "C:\\lua-5.5.0_Win64_bin\\lua55.exe"
+            },
+            "linux": {
+                "luaExe": "lua"
+            }
         }
     ]
 }

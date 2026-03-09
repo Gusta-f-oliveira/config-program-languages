@@ -9,11 +9,16 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "Build F# Universal",
-            "program": "${fileDirname}/build_output/app.dll",
             "args": [],
             "cwd": "${fileDirname}",
             "stopAtEntry": false,
-            "console": "integratedTerminal"
+            "console": "integratedTerminal",
+            "windows": {
+                "program": "${fileDirname}/build_output/app.dll"
+            },
+            "linux": {
+                "program": "/tmp/vscode_bin/fsharp_build/${fileBasenameNoExtension}/bin/app.dll"
+            }
         }
     ]
 }

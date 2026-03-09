@@ -8,7 +8,7 @@
             "name": "R: Debug (F5)",
             "type": "R-Debugger",
             "request": "launch",
-            "debugMode": "workspace",
+            "debugMode": "file",
             "workingDirectory": "${workspaceFolder}",
             "file": "${file}"
         }

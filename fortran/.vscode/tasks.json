@@ -6,24 +6,23 @@
         {
             "label": "build",
             "type": "shell",
-            "command": "cmd",
-            "args": [
-                "/c",
-                "if not exist \"${workspaceFolder}\\bin\" mkdir \"${workspaceFolder}\\bin\" & if not exist \"${workspaceFolder}\\temp\" mkdir \"${workspaceFolder}\\temp\" & gfortran -static -g \"${file}\" -J \"${workspaceFolder}\\temp\" -o \"${workspaceFolder}\\bin\\${fileBasenameNoExtension}.exe\""
-            ],
-            "options": {
-                "cwd": "${fileDirname}",
-                "shell": {
-                    "executable": "cmd.exe",
-                    "args": [
-                        "/d",
-                        "/c"
-                    ]
-                }
-            },
             "group": {
                 "kind": "build",
                 "isDefault": true
+            },
+            "windows": {
+                "command": "cmd",
+                "args": [
+                    "/c",
+                    "if not exist \"${workspaceFolder}\\bin\" mkdir \"${workspaceFolder}\\bin\" & if not exist \"${workspaceFolder}\\temp\" mkdir \"${workspaceFolder}\\temp\" & gfortran -static -g \"${file}\" -J \"${workspaceFolder}\\temp\" -o \"${workspaceFolder}\\bin\\${fileBasenameNoExtension}.exe\""
+                ]
+            },
+            "linux": {
+                "command": "bash",
+                "args": [
+                    "-c",
+                    "mkdir -p /tmp/vscode_bin && gfortran -static -g \"${file}\" -J /tmp/vscode_bin -o /tmp/vscode_bin/\"${fileBasenameNoExtension}\""
+                ]
             },
             "presentation": {
                 "echo": false,

@@ -1,9 +1,12 @@
 {
+    "files.watcherExclude": {
+        "**/target": true
+    },
     "terminal.integrated.profiles.windows": {
         "PowerShell UTF-8": {
             "source": "PowerShell",
             "args": ["-NoExit", "-Command", "chcp 65001"]
         }
     },
-    "terminal.integrated.defaultProfile.windows": "Command Prompt",
+    "terminal.integrated.defaultProfile.windows": "PowerShell"
 }

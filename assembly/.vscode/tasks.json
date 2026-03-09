@@ -6,24 +6,24 @@
         {
             "label": "Build",
             "type": "shell",
-            "command": "cmd",
-            "args": [
-                "/C",
-                "if not exist \"${workspaceFolder}\\bin\" mkdir \"${workspaceFolder}\\bin\" & if not exist \"${workspaceFolder}\\temp\" mkdir \"${workspaceFolder}\\temp\" & nasm -f win64 -g \"${file}\" -o \"${workspaceFolder}\\temp\\${fileBasenameNoExtension}.o\" && gcc -g \"${workspaceFolder}\\temp\\${fileBasenameNoExtension}.o\" -o \"${workspaceFolder}\\bin\\${fileBasenameNoExtension}.exe\""
-            ],
             "group": {
                 "kind": "build",
                 "isDefault": true
             },
-            "presentation": {
-                "echo": false,
-                "reveal": "always",
-                "focus": false,
-                "panel": "shared",
-                "showReuseMessage": false,
-                "clear": true
+            "windows": {
+                "command": "cmd",
+                "args": [
+                    "/C",
+                    "if not exist \"${workspaceFolder}\\bin\" mkdir \"${workspaceFolder}\\bin\" & if not exist \"${workspaceFolder}\\temp\" mkdir \"${workspaceFolder}\\temp\" & nasm -f win64 -g \"${file}\" -o \"${workspaceFolder}\\temp\\${fileBasenameNoExtension}.o\" && gcc -g \"${workspaceFolder}\\temp\\${fileBasenameNoExtension}.o\" -o \"${workspaceFolder}\\bin\\${fileBasenameNoExtension}.exe\""
+                ]
             },
-            "problemMatcher": "$gcc"
+            "linux": {
+                "command": "bash",
+                "args": [
+                    "-c",
+                    "mkdir -p /tmp/vscode_bin && nasm -f elf64 -g \"${file}\" -o /tmp/vscode_bin/\"${fileBasenameNoExtension}.o\" && gcc -g -no-pie /tmp/vscode_bin/\"${fileBasenameNoExtension}.o\" -o /tmp/vscode_bin/\"${fileBasenameNoExtension}\""
+                ]
+            }
         }
     ]
 }

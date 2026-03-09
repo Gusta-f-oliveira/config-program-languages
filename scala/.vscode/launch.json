@@ -5,18 +5,14 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: Executar no Terminal (F5)",
-            "type": "debugpy",
+            "type": "scala",
             "request": "launch",
-            "program": "${file}",
+            "name": "Depurar Aba Atual (Scala)",
+            "mainClass": "${fileBasenameNoExtension}",
             "console": "integratedTerminal",
-            "justMyCode": true,
-            "windows": {
-                "python": "python"
-            },
-            "linux": {
-                "python": "/usr/bin/python3"
-            }
+            "jvmOptions": [
+                "-Dfile.encoding=UTF-8"
+            ]
         }
     ]
 }

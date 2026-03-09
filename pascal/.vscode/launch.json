@@ -8,14 +8,8 @@
             "name": "Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}\\bin\\${fileBasenameNoExtension}.exe",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
-            "environment": [],
-            "externalConsole": false,
+            "preLaunchTask": "Build Pascal",
             "MIMode": "gdb",
-            "miDebuggerPath": "gdb",
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",
@@ -28,7 +22,15 @@
                     "ignoreFailures": true
                 }
             ],
-            "preLaunchTask": "Build Pascal"
+            "windows": {
+                "program": "${workspaceFolder}\\bin\\${fileBasenameNoExtension}.exe",
+                "miDebuggerPath": "gdb"
+            },
+            "linux": {
+                "program": "/tmp/pascal_build/app",
+                "miDebuggerPath": "gdb",
+                "cwd": "${workspaceFolder}"
+            }
         }
     ]
 }

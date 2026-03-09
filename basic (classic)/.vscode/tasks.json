@@ -4,32 +4,27 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Build Pascal",
+            "label": "compilar-freebasic",
             "type": "shell",
             "windows": {
-                "command": "fpc",
+                "command": "cmd",
                 "args": [
-                    "-g",
-                    "-FE${workspaceFolder}\\bin",
-                    "-FU${workspaceFolder}\\temp",
-                    "${file}"
+                    "/c",
+                    "if not exist \"${workspaceFolder}\\bin\" mkdir \"${workspaceFolder}\\bin\" && fbc -g -x \"${workspaceFolder}\\bin\\${fileBasenameNoExtension}.exe\" \"${file}\""
                 ]
             },
             "linux": {
                 "command": "bash",
                 "args": [
                     "-c",
-                    "mkdir -p /tmp/pascal_build && cp \"${file}\" /tmp/pascal_build/temp.pas && cd /tmp/pascal_build && fpc -g temp.pas -oapp"
+                    "mkdir -p /tmp/fbc_build && cp \"${file}\" /tmp/fbc_build/temp.bas && cd /tmp/fbc_build && fbc -g -x app temp.bas"
                 ]
             },
             "group": {
                 "kind": "build",
                 "isDefault": true
             },
-            "presentation": {
-                "reveal": "always",
-                "clear": true
-            },
+            "presentation": { "reveal": "silent" },
             "problemMatcher": []
         }
     ]

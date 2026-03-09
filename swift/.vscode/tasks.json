@@ -6,13 +6,22 @@
         {
             "label": "swift-build",
             "type": "shell",
-            "command": "cmd",
-            "args": [
-                "/C",
-                "cd /d \"${workspaceFolder}\" && if not exist bin mkdir bin && if not exist temp mkdir temp && swiftc -g \"${file}\" -o \"bin\\${fileBasenameNoExtension}.exe\" && (if exist \"bin\\${fileBasenameNoExtension}.exp\" move /Y \"bin\\${fileBasenameNoExtension}.exp\" temp >nul) && (if exist \"bin\\${fileBasenameNoExtension}.lib\" move /Y \"bin\\${fileBasenameNoExtension}.lib\" temp >nul)"
-            ],
             "group": "build",
-            "problemMatcher": []
+            "problemMatcher": [],
+            "windows": {
+                "command": "cmd",
+                "args": [
+                    "/C",
+                    "cd /d \"${workspaceFolder}\" && if not exist bin mkdir bin && if not exist temp mkdir temp && swiftc -g \"${file}\" -o \"bin\\${fileBasenameNoExtension}.exe\" && (if exist \"bin\\${fileBasenameNoExtension}.exp\" move /Y \"bin\\${fileBasenameNoExtension}.exp\" temp >nul) && (if exist \"bin\\${fileBasenameNoExtension}.lib\" move /Y \"bin\\${fileBasenameNoExtension}.lib\" temp >nul)"
+                ]
+            },
+            "linux": {
+                "command": "bash",
+                "args": [
+                    "-c",
+                    "mkdir -p /tmp/vscode_bin && swiftc -g \"${file}\" -o /tmp/vscode_bin/\"${fileBasenameNoExtension}\""
+                ]
+            }
         }
     ]
 }

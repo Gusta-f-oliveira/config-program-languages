@@ -10,7 +10,13 @@
             "request": "launch",
             "mode": "auto",
             "program": "${file}",
-            "console": "integratedTerminal"
+            "console": "integratedTerminal",
+            "dlvFlags": [
+                "--check-go-version=false"
+            ],
+            "linux": {
+                "output": "/tmp/__debug_bin"
+            }
         }
     ]
 }

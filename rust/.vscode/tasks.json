@@ -4,21 +4,30 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Executar Exercício Atual",
+            "label": "build-rust",
             "type": "shell",
-            "command": "cargo run",
-            "options": {
-                "cwd": "${fileDirname}"
-            },
             "group": {
                 "kind": "build",
                 "isDefault": true
             },
             "presentation": {
-                "reveal": "always",
-                "panel": "shared"
+                "reveal": "silent",
+                "clear": true
             },
-            "problemMatcher": ["$rustc"]
+            "windows": {
+                "command": "cmd",
+                "args": [
+                    "/c",
+                    "mkdir \"${workspaceFolder}\\bin\" 2>nul & rustc -g \"${file}\" -o \"${workspaceFolder}\\bin\\${fileBasenameNoExtension}.exe\""
+                ]
+            },
+            "linux": {
+                "command": "bash",
+                "args": [
+                    "-c",
+                    "mkdir -p /tmp/vscode_bin && rustc -g \"${file}\" -o /tmp/vscode_bin/\"${fileBasenameNoExtension}\""
+                ]
+            }
         }
     ]
 }

@@ -6,11 +6,6 @@
         {
             "label": "build-c",
             "type": "shell",
-            "command": "cmd",
-            "args": [
-                "/c",
-                "mkdir \"${workspaceFolder}\\bin\" 2>nul & gcc -g \"${file}\" -o \"${workspaceFolder}\\bin\\${fileBasenameNoExtension}.exe\""
-            ],
             "group": {
                 "kind": "build",
                 "isDefault": true
@@ -19,7 +14,21 @@
                 "reveal": "silent",
                 "clear": true
             },
-            "problemMatcher": "$gcc"
+            "problemMatcher": "$gcc",
+            "windows": {
+                "command": "cmd",
+                "args": [
+                    "/c",
+                    "mkdir \"${workspaceFolder}\\bin\" 2>nul & chcp 65001 >nul & gcc -g \"${file}\" -o \"${workspaceFolder}\\bin\\${fileBasenameNoExtension}.exe\""
+                ]
+            },
+            "linux": {
+                "command": "bash",
+                "args": [
+                    "-c",
+                    "mkdir -p /tmp/vscode_bin && gcc -g \"${file}\" -o /tmp/vscode_bin/\"${fileBasenameNoExtension}\""
+                ]
+            }
         }
     ]
 }

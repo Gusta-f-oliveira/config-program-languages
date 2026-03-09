@@ -6,14 +6,20 @@
     "configurations": [
         {
             "name": "Debug C# (F5)",
-            "type": "clr",
             "request": "launch",
-            "program": "${workspaceFolder}/bin/${fileBasenameNoExtension}.exe",
             "args": [],
             "cwd": "${workspaceFolder}",
             "console": "integratedTerminal",
             "stopAtEntry": false,
-            "preLaunchTask": "build-csharp"
+            "preLaunchTask": "build-csharp",
+            "windows": {
+                "type": "clr",
+                "program": "${workspaceFolder}/bin/${fileBasenameNoExtension}.exe"
+            },
+            "linux": {
+                "type": "mono",
+                "program": "/tmp/vscode_bin/${fileBasenameNoExtension}.exe"
+            }
         }
     ]
 }

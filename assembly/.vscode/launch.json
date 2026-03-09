@@ -8,14 +8,11 @@
             "name": "Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}\\bin\\${fileBasenameNoExtension}.exe",
-            "args": [],
-            "stopAtEntry": false,
+            "preLaunchTask": "Build",
             "cwd": "${fileDirname}",
-            "environment": [],
+            "stopAtEntry": false,
             "externalConsole": false,
             "MIMode": "gdb",
-            "miDebuggerPath": "gdb",
             "setupCommands": [
                 {
                     "description": "Habilitar a reformatação automática para gdb",
@@ -28,7 +25,12 @@
                     "ignoreFailures": true
                 }
             ],
-            "preLaunchTask": "Build"
+            "windows": {
+                "program": "${workspaceFolder}\\bin\\${fileBasenameNoExtension}.exe"
+            },
+            "linux": {
+                "program": "/tmp/vscode_bin/${fileBasenameNoExtension}"
+            }
         }
     ]
 }

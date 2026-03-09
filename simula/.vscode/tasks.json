@@ -4,22 +4,13 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Build Pascal",
+            "label": "Build Simula",
             "type": "shell",
-            "windows": {
-                "command": "fpc",
-                "args": [
-                    "-g",
-                    "-FE${workspaceFolder}\\bin",
-                    "-FU${workspaceFolder}\\temp",
-                    "${file}"
-                ]
-            },
             "linux": {
                 "command": "bash",
                 "args": [
                     "-c",
-                    "mkdir -p /tmp/pascal_build && cp \"${file}\" /tmp/pascal_build/temp.pas && cd /tmp/pascal_build && fpc -g temp.pas -oapp"
+                    "mkdir -p /tmp/simula_build && cp \"${file}\" /tmp/simula_build/temp.sim && cd /tmp/simula_build && cim temp.sim"
                 ]
             },
             "group": {
@@ -29,8 +20,7 @@
             "presentation": {
                 "reveal": "always",
                 "clear": true
-            },
-            "problemMatcher": []
+            }
         }
     ]
 }

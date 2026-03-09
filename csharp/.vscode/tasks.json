@@ -6,11 +6,6 @@
         {
             "label": "build-csharp",
             "type": "shell",
-            "command": "cmd",
-            "args": [
-                "/c",
-                "mkdir \"${workspaceFolder}\\bin\" 2>nul & \"C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\csc.exe\" /nologo /debug /out:\"${workspaceFolder}\\bin\\${fileBasenameNoExtension}.exe\" \"${file}\""
-            ],
             "group": {
                 "kind": "build",
                 "isDefault": true
@@ -19,7 +14,21 @@
                 "reveal": "silent",
                 "clear": true
             },
-            "problemMatcher": "$msCompile"
+            "problemMatcher": "$msCompile",
+            "windows": {
+                "command": "cmd",
+                "args": [
+                    "/c",
+                    "mkdir \"${workspaceFolder}\\bin\" 2>nul & \"C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\csc.exe\" /nologo /debug /out:\"${workspaceFolder}\\bin\\${fileBasenameNoExtension}.exe\" \"${file}\""
+                ]
+            },
+            "linux": {
+                "command": "bash",
+                "args": [
+                    "-c",
+                    "mkdir -p /tmp/vscode_bin && mcs -debug -out:/tmp/vscode_bin/\"${fileBasenameNoExtension}.exe\" \"${file}\""
+                ]
+            }
         }
     ]
 }

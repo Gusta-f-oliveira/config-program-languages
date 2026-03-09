@@ -5,21 +5,37 @@
     "tasks": [
         {
             "label": "Build F# Universal",
-            "command": "dotnet",
-            "type": "shell", 
-            "args": [
-                "build",
-                "${fileDirname}", 
-                "-o", "${fileDirname}/build_output", 
-                "/p:AssemblyName=app", 
-                "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary"
-            ],
-            "problemMatcher": "$msCompile",
+            "type": "shell",
             "group": {
                 "kind": "build",
                 "isDefault": true
-            }
+            },
+            "windows": {
+                "command": "dotnet",
+                "args": [
+                    "build",
+                    "${fileDirname}",
+                    "-o",
+                    "${fileDirname}/build_output",
+                    "/p:AssemblyName=app",
+                    "/property:GenerateFullPaths=true",
+                    "/consoleloggerparameters:NoSummary"
+                ]
+            },
+            "linux": {
+                "command": "dotnet",
+                "args": [
+                    "build",
+                    "${fileDirname}",
+                    "-o",
+                    "/tmp/vscode_bin/fsharp_build/${fileBasenameNoExtension}/bin",
+                    "/p:BaseIntermediateOutputPath=/tmp/vscode_bin/fsharp_build/${fileBasenameNoExtension}/obj/",
+                    "/p:AssemblyName=app",
+                    "/property:GenerateFullPaths=true",
+                    "/consoleloggerparameters:NoSummary"
+                ]
+            },
+            "problemMatcher": "$msCompile"
         }
     ]
 }

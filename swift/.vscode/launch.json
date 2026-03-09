@@ -8,10 +8,17 @@
             "name": "Swift: Debug (F5)",
             "type": "lldb",
             "request": "launch",
-            "program": "${workspaceFolder}\\bin\\${fileBasenameNoExtension}.exe",
             "preLaunchTask": "swift-build",
             "console": "integratedTerminal",
-            "sourceLanguages": ["swift"]
+            "sourceLanguages": [
+                "swift"
+            ],
+            "windows": {
+                "program": "${workspaceFolder}\\bin\\${fileBasenameNoExtension}.exe"
+            },
+            "linux": {
+                "program": "/tmp/vscode_bin/${fileBasenameNoExtension}"
+            }
         }
     ]
 }

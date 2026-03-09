@@ -3,14 +3,24 @@
     // for the documentation about the tasks.json format
     "version": "2.0.0",
     "tasks": [
-        {
+       {
             "label": "build-objc",
-            "type": "shell",
-            "command": "cmd",
-            "args": [
-                "/c",
-                "mkdir \"${workspaceFolder}\\bin\" 2>nul & gcc -g -x objective-c \"${file}\" -o \"${workspaceFolder}\\bin\\${fileBasenameNoExtension}.exe\" -lobjc"
-            ],
+            "type": "process",
+            "windows": {
+                "command": "C:\\msys64\\usr\\bin\\bash.exe",
+                "args": [
+                    "--login",
+                    "-c",
+                    "export MSYSTEM=MINGW64; source /etc/profile; cd \"$(cygpath '${fileDirname}')\" && mkdir -p \"$(cygpath '${workspaceFolder}/bin')\" && gcc -g -x objective-c \"${fileBasename}\" -o \"$(cygpath '${workspaceFolder}/bin/${fileBasenameNoExtension}.exe')\" -I /mingw64/include -I /mingw64/include/GNUstepBase -fconstant-string-class=NSConstantString -lobjc -lgnustep-base"
+                ]
+            },
+            "linux": {
+                "command": "bash",
+                "args": [
+                    "-c",
+                    "mkdir -p /tmp/objc_build && cp \"${file}\" /tmp/objc_build/temp.m && gcc -g -x objective-c /tmp/objc_build/temp.m -o /tmp/objc_build/app $(gnustep-config --objc-flags) $(gnustep-config --base-libs)"
+                ]
+            },
             "group": {
                 "kind": "build",
                 "isDefault": true

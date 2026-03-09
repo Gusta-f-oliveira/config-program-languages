@@ -1,4 +1,7 @@
 {
     "java.debug.settings.onBuildFailureProceed": true,
-    "r.lsp.promptToInstall": false
+    "r.lsp.promptToInstall": false,
+    "files.watcherExclude": {
+        "**/target": true
+    }
 }

@@ -8,14 +8,12 @@
             "name": "Debugar COBOL",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}\\bin\\${fileBasenameNoExtension}.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
-            "miDebuggerPath": "C:\\mingw64\\bin\\gdb.exe",
             "setupCommands": [
                 {
                     "description": "Habilitar pretty-printing",
@@ -23,7 +21,14 @@
                     "ignoreFailures": true
                 }
             ],
-            "preLaunchTask": "Compilar COBOL"
+            "preLaunchTask": "Compilar COBOL",
+            "windows": {
+                "program": "${workspaceFolder}\\bin\\${fileBasenameNoExtension}.exe",
+                "miDebuggerPath": "C:\\mingw64\\bin\\gdb.exe"
+            },
+            "linux": {
+                "program": "/tmp/vscode_bin/${fileBasenameNoExtension}"
+            }
         }
     ]
 }
